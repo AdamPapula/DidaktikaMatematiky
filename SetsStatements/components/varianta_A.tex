@@ -9,13 +9,14 @@
 \begin{table}[h]
 \centering
 
+\todo{Přepočítat body}\\
 \begin{tabular}{c|c|c|c|c|c}
     \textbf{Body}   & $10-9$ & $8-7$ & $6-5$ & $4-3$ & $2-0$ \\ \hline
     \textbf{Známka} & $1$     & $2$   & $3 $  & $4$   & $5$
 \end{tabular}
 \end{table}
 
-% \printanswers
+\printanswers
 
 
 \begin{questions}
@@ -106,22 +107,27 @@
             což odpovídá případu, kdy neexistuje ani jeden žák co umí na lyžích a snowboardu zároveň. Jelikož ale platí $31 > 24$,
             dostaneme informaci, že celkem 
                 
-                $$ 31 - 24 = 7 $$
+                $$ 31 - 24 = \doubleunderline{7} $$
             
             žáků umí na lyžích a snowboardu zároveň.
 
 
             \begin{tikzpicture}
-                \filldraw [fill=white] (-2,-2) rectangle (3,2);
+                \filldraw [fill=white] (-2.5,-2) rectangle (2.5,2);
                 
                 \scope % A \cap B
-                \clip (0,0) circle (1);
-                \filldraw [fill=pink,draw opacity=0.5] (1,0) circle (1);
+                \clip (-0.5,0) circle (1);
+                \filldraw [fill=pink,draw opacity=0.5] (0.5,0) circle (1);
                 \endscope
 
                 % outline
-                \draw (0,0) circle (1)
-                      (1,0) circle (1);
+                \draw (-0.5,0) circle (1)
+                      (0.5,0) circle (1);
+
+                \node (A) at (-2.2,1.7) {T};
+                \node (B) at (1.2,0) {S};
+                \node (B) at (-1.2,0) {L};
+                \node (C) at (0,0) {\small$L \cap S$};
             \end{tikzpicture}
         \end{solution}        
 
