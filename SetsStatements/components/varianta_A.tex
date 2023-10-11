@@ -95,13 +95,22 @@
         \begin{solution}[20cm]
             Označme si množinu všech žáků třídy jako $T$, $|T| = 29$. Žáky, kteří umí lyžovat označíme $L$, $|L| = 19$. 
             Snowboardisty označíme $S$, $|S| = 12$. Žáků, kteří neumí ani lyžovat ano na snowboardu je celkem $5$. Tedy 
-                $$ |L \displaystyle \cup S| &= 29 - 5 = 24 $$
+                
+                $$ |L \displaystyle \cup S| = 29 - 5 = 24 $$
 
-            žáků umí buď lyžovat, nebo na snowboardu nebo obojí.
+            žáků umí buď lyžovat, nebo na snowboardu nebo obojí. Nyní, pokud sečteme žáky, co umí lyžovat a na snowboardu
+            dostaneme 
+                
+                $$ 19 + 12 = 31\text{,} $$
+            
+            což odpovídá případu, kdy neexistuje ani jeden žák co umí na lyžích a snowboardu zároveň. Jelikož ale platí $31 > 24$,
+            dostaneme informaci, že celkem 
+                
+                $$ 31 - 24 = 7 $$
+            
+            žáků umí na lyžích a snowboardu zároveň.
 
-            \begin{align*}
 
-            \end{align*}
             \begin{tikzpicture}
                 \filldraw [fill=white] (-2,-2) rectangle (3,2);
                 
