@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper,addpoints]{exam}
+
+\pagestyle{empty}
+
+% Packages
+\usepackage{../Styles/defpackages}
+\usepackage{../Styles/mathcmd}
+\usepackage{../Styles/optionalcmd}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+
+% Assets
+\def\hmargin{18mm}
+\def\vmargin{25mm}
+\newcommand{\rightnote}[1]{\hspace*{\fill} $\triangleleft$ \textit{#1}}
+
+\input{../Assets/geometry.tex}
+
+% Title page info
+\def\maintitle{Didaktika informatiky}
+\def\subtitle{Zadání a~řešení písemné práce -- výroky a~množiny}
+\def\authorname{Kateřina Novotná, Adam Papula}
+
+% Language adjustment
+\chpword{b.}
+\pointpoints{b.}{b.}
+\bonuspointpoints{b. -- \textbf{bonusová úloha}}{b. -- \textbf{bonusová úloha}}
+
+%Checkbox adjustment
+\checkboxchar{$\Box$}
+\checkedchar{$\blacksquare$}
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \Large\textbf{{\maintitle}}
+
+            \normalsize
+            \vspace{0.5cm}
+                \subtitle
+            \vspace{1.5cm}
+            
+            \textbf{\authorname}
+            \vspace{1.5cm}
+
+            \today
+            \vfill
+            
+            \raggedright
+                \textbf{Čas:} 15-20 minut\\
+                \textbf{Cíle testu:}
+                \noindent
+                \begin{itemize}[topsep=0pt]
+                \item Úloha č. 1\\
+                        \todo{Bloom}
+                \item Úloha č. 2\\
+                        \todo{Bloom}
+                \item Úloha č. 3\\
+                        \todo{Bloom}
+                \end{itemize}
+        \end{center}
+    \end{titlepage}
+
+    \include{components/varianta_A.tex}
+    \include{components/varianta_B.tex}
+
+\end{document}
