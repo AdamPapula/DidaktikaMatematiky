@@ -1,0 +1,69 @@
+\begin{center}
+\large \textbf{Písemná práce:} exponenciální rovnice \textbf{(varianta B)}
+
+\normalsize
+\makebox[8cm]{\textsc{Jméno:}\enspace\hrulefill}\qquad
+\makebox[3cm]{\textsc{Třída:}\enspace\hrulefill}\qquad
+\makebox[4cm]{\textsc{Datum:}\enspace\hrulefill}
+\end{center}
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|c|c|c|c}
+    \textbf{Body}   & $10-9$ & $8-7$ & $6-5$ & $4-3$ & $2-0$ \\ \hline
+    \textbf{Známka} & $1$     & $2$   & $3 $  & $4$   & $5$
+\end{tabular}
+\end{table}
+
+\noindent
+% First Question
+\begin{questions}
+    \bracketedpoints
+    \question[3] Řešte v $\mathbb{R}$. $$\left(\dfrac{1}{9}\right)^{\frac{x}{x-2}} = 3^{\frac{1}{2}}$$
+    \question[3] Řešte v $\mathbb{Z}$. $$\sqrt[6]{6^{5x}} \cdot \sqrt[3]{6^{x+5}} = \sqrt[4]{36}$$
+    \question[4] Řešte v $\mathbb{Z}$. $$2\cdot0,5^{x^2+\frac{8}{3}x}=\frac{8}{\sqrt[3]{4}}$$
+\end{questions}
+\newpage
+
+\begin{center}
+\Large\textbf{Vzorové řešení}\normalsize
+\begin{enumerate}
+    \item Určení podmínek řešitelnosti: $x\neq 2$. \rightnote{1 bod}
+      \begin{align*}
+        \begin{aligned}
+          \left(\dfrac{1}{9}\right)^{\frac{x}{x-2}} &= 3^{\frac{1}{2}}\\
+          3^{-2\cdot\frac{x}{x-2}} &= 3^{\frac{1}{2}} & \text{\rightnote{převedení na společný základ (1 bod)}}\\
+          -2\cdot\frac{x}{x-2} &= \frac{1}{2}\\
+          -4x &= x-2\\
+          -5x &= -2\\
+          x &= \dfrac{2}{5} & \text{\rightnote{správný výsledek (1 bod)}}
+        \end{aligned}
+      \end{align*}
+    \item Definiční obor rovnice není omezen.
+    \begin{align*}
+      \begin{aligned}
+        \sqrt[6]{6^{5x}} \cdot \sqrt[3]{6^{x+5}} &= \sqrt[4]{36}\\
+        6^{\frac{5x}{6}} \cdot 6^{\frac{x+5}{3}} &= 36^{\frac{1}{4}}\\
+        6^{\frac{5x}{6}} \cdot 6^{\frac{x+5}{3}} &= 6^{\frac{1}{2}}\\
+        6^{\frac{5x}{6} + \frac{x+5}{3}} &= 6^{\frac{1}{2}}&\text{\rightnote{převedení na společný základ (2 body)}}\\
+        \frac{5x}{6} + \frac{x+5}{3} &= \frac{1}{2}\\
+        5x + 2x + 10 &= 3\\
+        7x &= -7\\
+        x &= -1&\text{\rightnote{správný výsledek (1 bod)}}
+      \end{aligned}
+    \end{align*}
+
+    \item Definiční obor není omezen.
+    \begin{align*}
+      \begin{aligned}
+        2\cdot0,5^{x^2+\frac{8}{3}x}&=\frac{8}{\sqrt[3]{4}}\\
+        \left(\frac{1}{2}\right)^{x^2+\frac{8}{3}x}&=\frac{2^3}{2^{\frac{2}{3}}}\cdot\frac{1}{2}\\
+        \left(\frac{1}{2}\right)^{x^2+\frac{8}{3}x}&=2^{\frac{4}{3}}\\
+        \left(\frac{1}{2}\right)^{x^2+\frac{8}{3}x}&=\left(\frac{1}{2}\right)^{-\frac{4}{3}}& \text{\rightnote{převedení na společný základ (2 body)}}\\
+        x^2+\frac{8}{3}x +\frac{4}{3} &= 0\\
+        3x^2+8x +4 &= 0\\
+        x_{1,2}&=\frac{-8\pm\sqrt{8^2-4\cdot 3\cdot7}}{2\cdot 3} & \\
+        x_1=-2 &\land \cancel{x_2=-\frac{2}{3}} & \text{\rightnote{správný výsledek a vyřazení $x_2$ (2 body)}}
+      \end{aligned}
+    \end{align*}
+\end{enumerate}
+\end{center}
