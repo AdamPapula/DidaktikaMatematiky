@@ -1,17 +1,121 @@
 \begin{center}
-\large \textbf{Písemná práce:} výroky a množiny \textbf{(varianta B)}
+\ifprintanswers
+    \large \textbf{Písemná práce:} výroky a množiny \textbf{(varianta B)} -- řešení
+\else
+    \large \textbf{Písemná práce:} výroky a množiny \textbf{(varianta B)}
 
-\normalsize
-\makebox[8cm]{\textsc{Jméno:}\enspace\hrulefill}\qquad
-\makebox[3cm]{\textsc{Třída:}\enspace\hrulefill}\qquad
-\makebox[4cm]{\textsc{Datum:}\enspace\hrulefill}
-\end{center}
-\begin{table}[h]
-\centering
-\begin{tabular}{c|c|c|c|c|c}
-    \textbf{Body}   & $10-9$ & $8-7$ & $6-5$ & $4-3$ & $2-0$ \\ \hline
-    \textbf{Známka} & $1$     & $2$   & $3 $  & $4$   & $5$
-\end{tabular}
-\end{table}
+    \normalsize
+    \makebox[8cm]{\textsc{Jméno:}\enspace\hrulefill}\qquad
+    \makebox[3cm]{\textsc{Třída:}\enspace\hrulefill}\qquad
+    \makebox[4cm]{\textsc{Datum:}\enspace\hrulefill}
+    \end{center}
 
-\noindent
+    \begin{table}[h]
+        \scriptsize
+        \centering
+        \begin{tabular}{rccccc}
+            \toprule
+            \textbf{Body} & $15$ & $14-12$ & $11-9$ & $8-6$ & $5-0$ \\ 
+            \textbf{Známka} & $1$ & $2$ & $3$ & $4$ & $5$ \\ 
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\fi
+
+\begin{questions}
+    \question \label{ques:1b} 
+        Určete, zda se jedná o výroky:
+        \begin{parts}
+            \part[\half]\TFQuestion{T}{$\exists! x \in \mathbb{R}, \forall y \in \mathbb{N}: \frac{y}{x} = 0$}
+            \part[\half]\TFQuestion{T}{Všechna prvočísla jsou lichá.}
+            \part[\half]\TFQuestion{F}{Berlín patří mezi racionální čísla.}
+        \end{parts}
+    
+    \question \label{ques:2b}
+        Určete negace kvantifikovaných výroků:   
+        \begin{parts}
+            \part[1]Všichni moji kamarádi mají hnědé oči
+            \begin{solutionordottedlines}[1cm]
+                Alespoň jeden můj kamarád nemá hnědé oči.
+            \end{solutionordottedlines}
+
+            \part[1]Alespoň 4 dny v týdnu bude pršet.
+            \begin{solutionordottedlines}[1cm]
+                Nejvýše 3 dny v týdnu bude pršet.
+            \end{solutionordottedlines}
+        \end{parts}
+
+    \question \label{ques:3b}
+        Negujte následující výroky:
+        \begin{parts}
+            \part[2]Existuje alespoň jeden trojúhelník, ve kterém se všechny jeho výšky neprotínají v jediném bodě. 
+            \begin{solutionordottedlines}[2cm]
+                V každém trojúhelníku se všechny jeho výšky protínají v jediném bodě.
+            \end{solutionordottedlines}
+
+            \part[2]Sní polévku právě tehdy, když v ní nebude zelenina. 
+            \begin{solutionordottedlines}[1cm]
+                Sní polévku a bude v ní zelenina nebo v polévce zelenina nebude a polévku nesní.
+            \end{solutionordottedlines}
+        \end{parts}
+
+    \question[1 \half] \label{ques:4b}
+        Z~následujících dvou \textit{symbolicky zapsaných kvantifikovaných výroků} si vyberte \textbf{jeden}, který vyjádříte slovy. Dále rozhodněte o~jeho pravdivosti:
+        \begin{parts}
+            \part $\forall x \in \mathbb{R}: x^2 > 0$
+            \part $\forall a \in \mathbb{R}, \forall b \in \mathbb{R}: a = b \iff a^2 = b^2$
+            \begin{solutionordottedlines}[2cm]
+                \begin{itemize}
+                    \item[(a)]  Výrok není pravdivý.\\
+                                Druhá mocnina každého reálného čísla je větší než nula. 
+                    \item[(b)]  Výrok není pravdivý.\\
+                                Pro každá dvě reálná čísla platí: čísla se sobě rovnají právě tehdy, když se rovnají jejich druhé mocniny.  
+                \end{itemize}
+            \end{solutionordottedlines}
+        \end{parts}
+
+    \question[1] \label{ques:5b}
+        Vypište všechny prvky následující množiny:
+        $$ S = \{\chi \in \mathbb{N}: -18 < \chi^3 \leq ^64 | \chi \text{ je sudé}\} $$
+        \begin{solution}[2cm]
+            $$S = \{2,4\}$$ 
+        \end{solution}
+    
+    \question[3] \label{ques:6b} 
+        Mějme zadány intervaly $A = (-5, 12)$, $B = \langle4, 11) $ a $C = \langle 3, 5 \rangle$.\\
+        Určete $((A \setminus B) \cup C)'$
+        \begin{solution}[5cm]
+            \begin{align*}
+                A  \setminus B                  &= (-5,4) \cup \langle 11,12)\\
+                (A  \setminus B) \cup C         &= (-5,5\rangle \cup \langle11,12)\\
+                ((A  \cap B) \setminus C)'      &= (-\infty, -5\rangle  \cup  (-5,11)  \cup \langle 12, \infty)
+            \end{align*}
+        \end{solution}
+
+    \question[2] \label{ques:7b}
+        Ve třídě hraje 21 žáků fotbal nebo košíkovou, 4 žácí z této třídy nehrají ani fotbal, ani košíkovou, 12 žáků hraje 
+        košíkovou, 14 žáků hraje fotbal. Znázorněte pomocí Vennova diagramu a~určete, kolik žáků hraje pouze fotbal.
+        
+        \begin{solution}[10cm]
+            Označme si množinu všech žáků třídy jako $T$. Žáky, kteří hrají fotbal označíme $F$ a žáky hrající košíkovou $K$. 
+            Víme, že 
+                $$ |F \cap K| = 21\text{.} $$
+            Dále ze zadání víme, že 
+                $$ |(F \cap K)'| = 4\text{.} $$
+            Pro množinu $K$ platí $|K| = 12$ a pro množinu $F$ platí $|F| = 14$. Máme tedy
+                $$12 + 14 = 26\text{,}$$
+            přičemž sportuje pouze $21$ žáků, tedy
+                $$26-21 = 5$$
+            žáků hraje obě hry. Nyní nám stačí dopočítat počet žáků hrající pouze fotbal,
+                $$14 - 5 = \doubleunderline{9}$$ 
+
+            $T$\\
+            \begin{venndiagram2sets}[labelA={$F$},labelB={$K$},labelOnlyA={9},labelOnlyB={7},
+                labelAB={5},labelNotAB={4}]
+                \setkeys{venn}{shade=pink!50!white}
+                \fillOnlyA
+            \end{venndiagram2sets}
+        \end{solution}        
+\end{questions}
+
+
