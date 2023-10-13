@@ -25,9 +25,9 @@ jobs:
 
     - name: Compile LaTeX files
       run: |
-        ls
-        lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex
-        lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex
+        ls &&
+        lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex &&
+        lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex &&
         lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex
       shell: bash
 
