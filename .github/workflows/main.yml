@@ -25,15 +25,15 @@ jobs:
 
     - name: Compile LaTeX files
       run: |
-        find . -type f -name '/SetsStatements/main.tex' -execdir lualatex {} \;
-        mv ./SetsStatements/main.pdf ./SetsStatements/sets-statements.pdf
+        cd ./SetsStatements/
+        lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux --jobname=main.tex .\sets-statements > out.log
       shell: bash
 
     - name: Upload pdf to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./SetsStatements/sets-statements.pdf
+        file: ~/SetsStatements/sets-statements.pdf
         tag: ${{ github.ref }}
         overwrite: true
         file_glob: true
