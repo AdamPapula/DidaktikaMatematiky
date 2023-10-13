@@ -1,0 +1,37 @@
+name: Build and Release LaTeX
+
+on:
+  push:
+    branches:
+      - main # Změňte podle vašich potřeb
+  pull_request:
+    branches:
+      - main # Změňte podle vašich potřeb
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up LuaLaTeX
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-full
+      shell: bash
+
+    - name: Compile LaTeX files
+      run: |
+        find . -type f -name 'main.tex' -execdir lualatex {} \;
+      shell: bash
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        files: |
+          ./**/*.pdf
