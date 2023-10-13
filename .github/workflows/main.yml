@@ -25,17 +25,17 @@ jobs:
 
     - name: Compile LaTeX files
       run: |
-        cd ~/SetsStatements/
-        lualatex --synctex=0 --interaction=nonstopmode --jobname=sets-statements ./main.tex > out1.log
-        lualatex --synctex=0 --interaction=nonstopmode --jobname=sets-statements ./main.tex > out1.log
-        lualatex --synctex=0 --interaction=nonstopmode --jobname=sets-statements ./main.tex > out1.log
+        ls
+        lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex
+        lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex
+        lualatex --synctex=0 --interaction=nonstopmode --output-directory="./SetsStatements/" --jobname=sets-statements ./SetsStatements/main.tex
       shell: bash
 
     - name: Upload pdf to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ~/SetsStatements/sets-statements.pdf
+        file: /SetsStatements/sets-statements.pdf
         tag: ${{ github.ref }}
         overwrite: true
         file_glob: true
