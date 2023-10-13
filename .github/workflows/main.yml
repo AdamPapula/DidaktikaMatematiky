@@ -26,7 +26,9 @@ jobs:
     - name: Compile LaTeX files
       run: |
         cd ./SetsStatements/
-        lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux --jobname=main.tex .\sets-statements > out.log
+        lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux --jobname=main.tex .\sets-statements > out1.log
+        lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux --jobname=main.tex .\sets-statements > out1.log
+        lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux --jobname=main.tex .\sets-statements > out1.log
       shell: bash
 
     - name: Upload pdf to release
