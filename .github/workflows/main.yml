@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +20,7 @@ jobs:
     - name: Set up LuaLaTeX
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-full
+        sudo apt-get install -y texlive texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
       shell: bash
 
     - name: Compile LaTeX files
