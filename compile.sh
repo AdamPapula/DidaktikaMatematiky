@@ -17,9 +17,9 @@ then
         cd "$DIRECTORY" || continue
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
         if [ -n "$TEX_FILE" ]; then
-            pdflatex --interaction=nonstopmode "$TEX_FILE" > out.log
-            pdflatex --interaction=nonstopmode "$TEX_FILE" > out.log
-            pdflatex --interaction=nonstopmode "$TEX_FILE" > out.log
+            lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
+            lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
+            lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
         else
             echo "No LaTeX file found, exit."
         fi
@@ -28,21 +28,21 @@ then
     done
 
     mkdir releases
-    for DIRECTORY in */; do
-        if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
-            then
-            cd "$DIRECTORY" || continue
-            PDF_FILES=(*.pdf)
-            if [ ${#PDF_FILES[@]} -gt 0 ]
-            then
-                for PDF_FILE in "${PDF_FILES[@]}"; do
-                    NEW_FILENAME="${DIRECTORY%/}.pdf"  # Nový název souboru bude jméno složky s příponou .pdf
-                    mv "$PDF_FILE" ~/releases/"$NEW_FILENAME"
-                    echo "Přejmenováno a přesunuto: $PDF_FILE -> ~/releases/$NEW_FILENAME"
-                done
-            fi
-        fi
-        cd "$CURRENT_PATH"
-    done
+    # for DIRECTORY in */; do
+    #     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
+    #         then
+    #         cd "$DIRECTORY" || continue
+    #         PDF_FILES=(*.pdf)
+    #         if [ ${#PDF_FILES[@]} -gt 0 ]
+    #         then
+    #             for PDF_FILE in "${PDF_FILES[@]}"; do
+    #                 NEW_FILENAME="${DIRECTORY%/}.pdf"  # Nový název souboru bude jméno složky s příponou .pdf
+    #                 mv "$PDF_FILE" ~/releases/"$NEW_FILENAME"
+    #                 echo "Přejmenováno a přesunuto: $PDF_FILE -> ~/releases/$NEW_FILENAME"
+    #             done
+    #         fi
+    #     fi
+    #     cd "$CURRENT_PATH"
+    # done
   
 fi
