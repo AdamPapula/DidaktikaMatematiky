@@ -4,7 +4,7 @@ COMPILE=true
 
 if [ "$COMPILE" = true ]
 then
-  sudo apt-get install texlive texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
+  sudo apt-get install -y texlive texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
 
   CURRENT_PATH=$(pwd)
   
@@ -34,7 +34,7 @@ then
     #         then
     #             for PDF_FILE in "${PDF_FILES[@]}"; do
     #                 NEW_FILENAME="${DIRECTORY%/}.pdf"  # Nový název souboru bude jméno složky s příponou .pdf
-    #                 mv "$PDF_FILE" ~/assets/"$NEW_FILENAME"
+    #                 mv "$PDF_FILE" ~/releases/"$NEW_FILENAME"
     #                 echo "Přejmenováno a přesunuto: $PDF_FILE -> ~/releases/$NEW_FILENAME"
     #             done
     #         fi
