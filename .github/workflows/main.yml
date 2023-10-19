@@ -26,6 +26,12 @@ jobs:
       run: |
         tag_name="${GITHUB_REF##*/}"
         sudo apt-get install hub -y
-        hub release create -a releases/* -m "$tag_name" "$tag_name"
+                set -x
+        cd ./releases/
+        releases=()
+        for releases in ./*.pdf; do
+          releases+=("-a" "$releases")
+        done
+        hub release create "${releases[@]}" -m "$tag_name" "$tag_name"
 
 
