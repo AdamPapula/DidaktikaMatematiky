@@ -11,13 +11,14 @@ then
   CURRENT_PATH=$(pwd)
   mkdir releases
   for DIRECTORY in */; do
-    echo "$DIRECTORY"
-    if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ] && [ "$DIRECTORY" != "Styles/" ]
+    echo Trying dir "$DIRECTORY"
+    if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" -a "$DIRECTORY" != "Styles/" -a "$DIRECTORY" != "releases/" ]
     then   
         cd "$DIRECTORY" || continue
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
-        echo "$TEX_FILE"
-        if [ -n "$TEX_FILE" ]; then
+        echo Compiling LaTeX file "$TEX_FILE" in "$DIRECTORY"
+        if [ -n "$TEX_FILE" ]
+        then
             lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="${DIRECTORY%/}" "$TEX_FILE" > out.log
             lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="${DIRECTORY%/}" "$TEX_FILE" > out.log
             lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="${DIRECTORY%/}" "$TEX_FILE" > out.log
@@ -30,22 +31,7 @@ then
 
     ls ./releases/
 
-
-    # for DIRECTORY in */; do
-    #     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ] && [ "$DIRECTORY" != "Styles/" ]
-    #         then
-    #         cd "$DIRECTORY" || continue
-    #         PDF_FILES=(*.pdf)
-    #         if [ ${#PDF_FILES[@]} -gt 0 ]
-    #         then
-    #             for PDF_FILE in "${PDF_FILES[@]}"; do
-    #                 NEW_FILENAME="${DIRECTORY%/}.pdf"  # Nový název souboru bude jméno složky s příponou .pdf
-    #                 mv "$PDF_FILE" ~/releases/"$NEW_FILENAME"
-    #                 echo "Přejmenováno a přesunuto: $PDF_FILE -> ~/releases/$NEW_FILENAME"
-    #             done
-    #         fi
-    #     fi
-    #     cd "$CURRENT_PATH"
-    # done
-  
+    find ./releases -type f ! -name "*.pdf" -exec rm -f {} \;
+    
+    hub release create -a releases/* -m "Verze 1.0" v1.0
 fi

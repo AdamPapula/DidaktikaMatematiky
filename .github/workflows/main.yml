@@ -20,17 +20,17 @@ jobs:
     - name: 🏗️ LaTeX compile
       run: sh ./compile.sh
 
-    - name: 🤝 Upload pdf to release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        set -x
-        cd ./releases/
-        assets=()
-        for asset in ./*.pdf; do
-          assets+=("-a" "$asset")
-        done
-        tag_name="${GITHUB_REF##*/}"
-        hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
+    # - name: 🤝 Upload pdf to release
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   run: |
+    #     set -x
+    #     cd ./releases/
+    #     assets=()
+    #     for asset in ./*.pdf; do
+    #       assets+=("-a" "$asset")
+    #     done
+    #     tag_name="${GITHUB_REF##*/}"
+    #     hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
 
 
