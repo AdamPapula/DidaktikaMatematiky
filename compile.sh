@@ -24,22 +24,22 @@ then
     fi
     done
 
-    mkdir -p releases
-    for DIRECTORY in */; do
-        if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
-            then
-            cd "$DIRECTORY" || continue
-            PDF_FILES=(*.pdf)
-            if [ ${#PDF_FILES[@]} -gt 0 ]
-            then
-                for PDF_FILE in "${PDF_FILES[@]}"; do
-                    NEW_FILENAME="${DIRECTORY%/}.pdf"  # Nový název souboru bude jméno složky s příponou .pdf
-                    mv "$PDF_FILE" ~/assets/"$NEW_FILENAME"
-                    echo "Přejmenováno a přesunuto: $PDF_FILE -> ~/releases/$NEW_FILENAME"
-                done
-            fi
-        fi
-        cd "$CURRENT_PATH"
-    done
+    mkdir releases
+    # for DIRECTORY in */; do
+    #     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
+    #         then
+    #         cd "$DIRECTORY" || continue
+    #         PDF_FILES=(*.pdf)
+    #         if [ ${#PDF_FILES[@]} -gt 0 ]
+    #         then
+    #             for PDF_FILE in "${PDF_FILES[@]}"; do
+    #                 NEW_FILENAME="${DIRECTORY%/}.pdf"  # Nový název souboru bude jméno složky s příponou .pdf
+    #                 mv "$PDF_FILE" ~/assets/"$NEW_FILENAME"
+    #                 echo "Přejmenováno a přesunuto: $PDF_FILE -> ~/releases/$NEW_FILENAME"
+    #             done
+    #         fi
+    #     fi
+    #     cd "$CURRENT_PATH"
+    # done
   
 fi
