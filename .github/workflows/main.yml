@@ -25,6 +25,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         tag_name="${GITHUB_REF##*/}"
+        sudo apt-get install hub -y
         hub release create -a releases/* -m "$tag_name" "$tag_name"
 
 
