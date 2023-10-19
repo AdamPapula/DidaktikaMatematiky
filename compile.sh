@@ -11,7 +11,7 @@ then
   CURRENT_PATH=$(pwd)
   
   for DIRECTORY in */; do
-    echo $DIRECTORY
+    echo "$DIRECTORY"
     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
     then   
         cd "$DIRECTORY" || continue
