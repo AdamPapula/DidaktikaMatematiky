@@ -14,29 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
+    - name: 🚚 Checkout
       uses: actions/checkout@v2
 
-    - name: Set up LuaLaTeX
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
-      shell: bash
+    - name: 🏗️ LaTeX compile
+      run: sh ./compile.sh
 
-    - name: Compile LaTeX files
-      run: |
-        ls &&
-        cd ./SetsStatements/ &&
-        lualatex --synctex=0 --interaction=nonstopmode --jobname=sets-statements ./main.tex &&
-        lualatex --synctex=0 --interaction=nonstopmode --jobname=sets-statements ./main.tex &&
-        lualatex --synctex=0 --interaction=nonstopmode --jobname=sets-statements ./main.tex
-      shell: bash
-
-    - name: Upload pdf to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: /SetsStatements/sets-statements.pdf
-        tag: ${{ github.ref }}
-        overwrite: true
-        file_glob: true
+    - name: 🤝 Upload pdf to release
+    - run: |
+        set -x
+        cd ./assets/
+        assets=()
+        for asset in ./*.pdf; do
+          assets+=("-a" "$asset")
+        done
+        tag_name="${GITHUB_REF##*/}"
+        hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
