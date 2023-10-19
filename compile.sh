@@ -26,7 +26,7 @@ then
 
     mkdir -p releases
     for DIRECTORY in */; do
-        if [ -d "$DIRECTORY" ]
+        if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
             then
             cd "$DIRECTORY" || continue
             PDF_FILES=(*.pdf)
