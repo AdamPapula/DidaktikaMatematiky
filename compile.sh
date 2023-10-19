@@ -4,7 +4,7 @@ COMPILE=true
 
 if [ "$COMPILE" = true ]
 then
-  sudo apt-get install -y texlive texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
+  sudo apt-get install -y texlive texlive-latex-base texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
 
   CURRENT_PATH=$(pwd)
   
@@ -14,9 +14,9 @@ then
         cd "$DIRECTORY" || continue
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
         if [ -n "$TEX_FILE" ]; then
-            lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux "$TEX_FILE" > out.log
-            lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux "$TEX_FILE" > out.log
-            lualatex --synctex=0 --interaction=nonstopmode --aux-directory=aux "$TEX_FILE" > out.log
+            pdflatex --interaction=nonstopmode "$TEX_FILE" > out.log
+            pdflatex --interaction=nonstopmode "$TEX_FILE" > out.log
+            pdflatex --interaction=nonstopmode "$TEX_FILE" > out.log
         else
             echo "No LaTeX file found, exit."
         fi
