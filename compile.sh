@@ -14,6 +14,7 @@ then
     echo "$DIRECTORY"
     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ] && [ "$DIRECTORY" != "Styles/" ]
     then   
+        cd "$DIRECTORY" || continue
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
         echo "$TEX_FILE"
         if [ -n "$TEX_FILE" ]; then
