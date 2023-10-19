@@ -33,5 +33,6 @@ jobs:
           releases+=("-a" "$releases")
         done
         hub release create "${releases[@]}" -m "$tag_name" "$tag_name"
+        
 
 
