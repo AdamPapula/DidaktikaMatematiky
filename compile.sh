@@ -9,7 +9,7 @@ then
   CURRENT_PATH=$(pwd)
   
   for DIRECTORY in */; do
-    if [ -d "$DIRECTORY"] && ["$DIRECTORY" != "Assets/" ]; then
+    if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]; then
         cd "$DIRECTORY" || continue
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
         if [ -n "$TEX_FILE" ]; then
