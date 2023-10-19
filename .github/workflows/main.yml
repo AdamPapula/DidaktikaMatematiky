@@ -21,18 +21,11 @@ jobs:
       run: sh ./compile.sh
 
     - name: 🤝 Upload pdf to release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: releases/*  # Cesta k souborům, které chcete nahrát
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        tag_name="${GITHUB_REF##*/}"
-        sudo apt-get install hub -y
-                set -x
-        cd ./releases/
-        releases=()
-        for releases in ./*.pdf; do
-          releases+=("-a" "$releases")
-        done
-        hub release create "${releases[@]}" -m "$tag_name" "$tag_name"
-        
+
 
 
