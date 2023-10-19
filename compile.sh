@@ -12,10 +12,10 @@ then
   
   for DIRECTORY in */; do
     echo "$DIRECTORY"
-    if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
+    if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ] && [ "$DIRECTORY" != "Styles/" ]
     then   
-        cd "$DIRECTORY" || continue
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
+        echo "$TEX_FILE"
         if [ -n "$TEX_FILE" ]; then
             lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
             lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
@@ -29,7 +29,7 @@ then
 
     mkdir releases
     # for DIRECTORY in */; do
-    #     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ]
+    #     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ] && [ "$DIRECTORY" != "Styles/" ]
     #         then
     #         cd "$DIRECTORY" || continue
     #         PDF_FILES=(*.pdf)
