@@ -4,12 +4,12 @@ COMPILE=true
 
 if [ "$COMPILE" = true ]
 then
-  sudo apt-get update -y
-  sudo apt-get upgrade -y
-  sudo apt-get install -y texlive texlive-latex-base texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
+  sudo apt-get update -y > update.log
+  sudo apt-get upgrade -y > upgrade.log
+  sudo apt-get install -y texlive texlive-latex-base texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk > install.log
 
   CURRENT_PATH=$(pwd)
-  
+  mkdir releases
   for DIRECTORY in */; do
     echo "$DIRECTORY"
     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ] && [ "$DIRECTORY" != "Styles/" ]
@@ -18,9 +18,9 @@ then
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
         echo "$TEX_FILE"
         if [ -n "$TEX_FILE" ]; then
-            lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
-            lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
-            lualatex --interaction=nonstopmode "$TEX_FILE" > out.log
+            lualatex  --synctex=0 --interaction=nonstopmode --aux-directory=aux --output-directory="../releases/" --job-name="$DIRECTORY" "$TEX_FILE" > out.log
+            lualatex  --synctex=0 --interaction=nonstopmode --aux-directory=aux --output-directory="../releases/" --job-name="$DIRECTORY" "$TEX_FILE" > out.log
+            lualatex  --synctex=0 --interaction=nonstopmode --aux-directory=aux --output-directory="../releases/" --job-name="$DIRECTORY" "$TEX_FILE" > out.log
         else
             echo "No LaTeX file found, exit."
         fi
@@ -28,7 +28,9 @@ then
     fi
     done
 
-    mkdir releases
+    ls ./releases/
+
+
     # for DIRECTORY in */; do
     #     if [ -d "$DIRECTORY" ] && [ "$DIRECTORY" != "Assets/" ] && [ "$DIRECTORY" != "Styles/" ]
     #         then
