@@ -4,9 +4,9 @@ COMPILE=true
 
 if [ "$COMPILE" = true ]
 then
-  sudo apt-get update -y > update.log
-  sudo apt-get upgrade -y > upgrade.log
-  sudo apt-get install -y texlive texlive-latex-base texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk > install.log
+#   sudo apt-get update -y > update.log
+#   sudo apt-get upgrade -y > upgrade.log
+#   sudo apt-get install -y texlive texlive-latex-base texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk > install.log
 
   CURRENT_PATH=$(pwd)
   mkdir releases
