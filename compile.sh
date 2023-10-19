@@ -32,6 +32,4 @@ then
     ls ./releases/
 
     find ./releases -type f ! -name "*.pdf" -exec rm -f {} \;
-    
-    hub release create -a releases/* -m "Verze 1.0" v1.0
 fi
