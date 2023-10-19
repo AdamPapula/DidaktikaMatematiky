@@ -18,9 +18,9 @@ then
         TEX_FILE=$(find . -name "*.tex" -maxdepth 1)
         echo "$TEX_FILE"
         if [ -n "$TEX_FILE" ]; then
-            lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="$DIRECTORY" "$TEX_FILE" > out.log
-            lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="$DIRECTORY" "$TEX_FILE" > out.log
-            lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="$DIRECTORY" "$TEX_FILE" > out.log
+            lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="${DIRECTORY%/}" "$TEX_FILE" > out.log
+            lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="${DIRECTORY%/}" "$TEX_FILE" > out.log
+            lualatex  --synctex=0 --interaction=nonstopmode --output-directory="../releases/" --jobname="${DIRECTORY%/}" "$TEX_FILE" > out.log
         else
             echo "No LaTeX file found, exit."
         fi
