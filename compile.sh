@@ -4,6 +4,8 @@ COMPILE=true
 
 if [ "$COMPILE" = true ]
 then
+  sudo apt-get update -y
+  sudo apt-get upgrade -y
   sudo apt-get install -y texlive texlive-latex-base texlive-publishers texlive-science texlive-lang-czechslovak cm-super latexmk
 
   CURRENT_PATH=$(pwd)
