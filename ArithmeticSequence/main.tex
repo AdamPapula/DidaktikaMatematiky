@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper,addpoints]{article}
+
+\pagestyle{empty}
+
+% Packages
+\usepackage{../Styles/defpackages}
+\usepackage{../Styles/mathcmd}
+\usepackage{../Styles/optionalcmd}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+
+% Assets
+\def\hmargin{18mm}
+\def\vmargin{25mm}
+\newcommand{\rightnote}[1]{\hspace*{\fill} $\triangleleft$ \textit{#1}}
+
+\input{../Assets/geometry.tex}
+
+% Title page info
+\def\maintitle{Didaktika matematiky}
+\def\subtitle{Motivace a zavedení konkrétního pojmu školské matematiky}
+\def\authorname{Kateřina Novotná, Adam Papula}
+
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \Large\textbf{{\maintitle}}
+
+            \normalsize
+            \vspace{0.5cm}
+                \subtitle
+            \vspace{1.5cm}
+            
+            \textbf{\authorname}
+            \vspace{1.5cm}
+
+            \today
+            \vfill
+            
+            \raggedright
+                \textbf{Téma:} aritmetická posloupnost -- diference; vzorce pro $n$-tý člen, součet prvních $n$ členů.
+                
+                \textbf{Cílová skupina žáků:} 3. ročník SŠ., 1 vyučovací hodina (45 minut)
+                
+                \textbf{Předpoklady:}\\
+                    \footnotesize
+                    Žáci znají:
+                    \vspace{-5mm}
+                        \begin{itemize}[noitemsep,topsep=0pt]
+                                \item \textbf{posloupnost} jako speciální případ funkce (definičním oborem $D(f)$ je množina \mathbb{N}, příp. její konečná podmnožina), 
+                                \item \textbf{(ne)konečná posloupnost},
+                                \item \textbf{$n$-tý člen posloupnosti} $a_n$ jako funkční hodnota posloupnosti $f$ v bodě $n$,
+                                \item \textbf{symbolický zápis (nekonečné) posloupnosti} (tj. $a_1$, $a_2$,\dots $a_n$),
+                                \item \textbf{způsoby zadání posloupnosti} -- vzorcem pro $n$-tý člen nebo rekurentně,
+                                \item \textbf{grafické znázornění posloupností} -- graf posloupnosti (jako funkce) nebo znázorněním bodů $a_n$ na číselné ose,
+                                \item \textbf{vlastnosti/druhy posloupností} -- (ne)rostoucí, (ne)klesající, (zdola, shora) omezené.
+                        \end{itemize}
+                \normalsize
+        \end{center}
+    \end{titlepage}
+
+
+    \newpage
+
+    % \section{Historie}
+    % Úvodní uvedení faktu o znalosti aritmetické posloupnosti již ve starověkém Egyptě,
+    % Babylonii a ve staré Číně.
+
+    % Zmínění Fibonacciho posloupnosti -- 
+
+    \section{Příklady z praxe}
+    \textbf{Odhadovaný čas:} 20 minut
+
+    Uvedení příkladů, se kterými se mohou žáci setkat v běžném životě. Uvedeny budou
+    následující příklady:
+    \begin{itemize}
+        \item Posloupnost přirozených čísel -- společně se určí $a_1$ a diference.
+        \item \textbf{Spoření} (neuvažujeme spořící účet v bance, na začátku období 
+              máme již něco naspořeno ($a_1 \neq 0$)) a~pravidelně, každý měsíc, ukládáme
+              stejnou částku. \textit{Kolik peněz budeme mát naspořeno za $x$ měsíců?}
+
+              \begin{example}
+                  Amálka si v minulém roce zvládla našetřit $50$ Kč. Babička Amálky se na 
+                  začátku ledna rozhodla, že jí na začátku každého měsíce dá kapesné 
+                  $100$ Kč. Amálka si všechny peníze pečlivě ukládá do pokladničky 
+                  a~nic neutratí. Kolik peněz bude mít naspořeno v~polovině června, 
+                  tj. po šesté výplatě kapesného?
+                  \begin{align*}
+                      a_1 &= 50; d = 100; n = 7\\
+                      a_2 &= 50 + 100 = 150 \quad \text{tj. naspořená částka z loňska + kapesné za leden}\\
+                      a_3 &= 150 + 100 \quad \text{tj. naspořená částka za leden + kapesné za únor}\\
+                      \dots\\
+                      a_7 &= 50 + (7-1)\cdot100 = \doubleunderline{650} \quad \text{tj. Amálka za 6 měsíců naspoří 650 Kč}
+                  \end{align*}
+                  \begin{center}
+                    \begin{tikzpicture}
+                    \begin{axis}[
+                        % x=2.5cm,y=2.5cm,
+                        xlabel={Měsíce},
+                        ylabel={Naspořená částka},
+                        xmin=0.2,
+                        xmax=8,
+                        ymin=-0.2,
+                        ymax=750,
+                        xtick={1,2,3,4,5,6,7},
+                        ytick={0,50,150,250,350,450,550,650},
+                        legend pos=north west,
+                        ymajorgrids=true,
+                        xmajorgrids=true,
+                        grid style=dashed,
+                        ]
+                        %\clip(-1.2,-1.2) rectangle (1.2,1.2);
+                        
+                        \addplot+[
+                            color=blue,
+                            mark=*,
+                            only marks
+                            ]
+                            coordinates{
+                                (1,50)(2,150)(3,250)(4,350)(5,450)(6,550)(7,650)
+                                };
+                                % \legend{Naspořená částka}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{center}
+                \end{example}
+
+        \item \textbf{Pokles teploty s rostoucí nadmořskou výškou.} Teplota klesá v~průměru
+              o \SI{0,65}{\celsius} na $100$ výškových metrů, tj. zvýší-li se nadmořská výška o 100~m.~n.~m., 
+              ochladí se v~místě v~průměru o \SI{0,65}{\celsius}. \textit{Jaké můžeme očekávat oteplení/ochlazení,
+              pokud se dostaneme do vyšší/nižší nadmořské výšky?}
+
+              \begin{example}
+                Průměrná nadmořská výška Prahy, odkud jedeme na dovolenou, je 235~m.~n.~m. Chceme jet lyžovat
+                do nedaleké Pece pod Sněžkou, jejíž průměrná výška je 769~m.~n.~m. O~kolik se bude lišit 
+                teplota oproti Praze, zanedbáme-li všechny ostatní vlivy počasí? 
+                
+                \begin{align*}
+                    235 - 769  &= -534 \quad \text{rozdíl nadmořských výšek v pořadí \uv{start -- cíl}}\\
+                    -534 \cdot \dfrac{0,65}{100} &= \doubleunderline{-3,471} \quad \text{teplota se sníží o \SI{3,471}{\celsius}} 
+                \end{align*}
+            \end{example}
+        \item Uvědomění si, že rozdíl každého následujícího a předchozího členu je konstantní. 
+    \end{itemize}
+    
+    \section{Odvození vzorců}
+    \textbf{Odhadovaný čas:} 10 minut
+    \begin{itemize}
+        \item Odvození definičního vzorce pro aritmetickou posloupnost -- (rekurentní zadání)
+              $$a_{n+1} = a_n + d.$$ 
+        \item Odvození vzorce pro $n$-tý člen aritmetické posloupnosti matematickou indukcí 
+              $$a_n = a_1 + (n - 1) \cdot d.$$
+    \end{itemize}
+
+    \section{Definice}
+    \textbf{Odhadovaný čas:} 5 minut
+    \begin{definition}
+        \textit{Aritmetická posloupnost} je každá posloupnost určená rekurentně vztahy 
+        $a_1 = a$, $a_{n+1} = a_n + d \; \forall n \in \mathbb{N}$ kde $a$, $d$ jsou reálná čísla. 
+        Číslo $d$ se nazývá \textit{diference aritmetické posloupnosti}.
+    \end{definition}
+
+    Název aritmetické posloupnosti je odvozen od toho, že každý její člen (s výjimkou prvního) je roven
+    aritmetickému průměru sousedních členů.\\
+    Aritmetická posloupnost s reálnými členy úzce souvisí s lineární funkcí $f:y=ax+b, x\in \mathbb{R}$, 
+    kde $a, b \in \mathbb{R}$ jsou daní čísla -- dostaneme ji z této funkce, omezíme-li její definiční 
+    obor na množinu \mathbb{N}. 
+
+    \section{Odvození vzorce pro součet}
+    \textbf{Odhadovaný čas:} 10 minut\\
+        Odvození vzorce pro součet prvních $n$ členů aritmetické posloupnosti matematickou indukcí 
+        $$s_n = \dfrac{n}{2} \cdot (a_1 + a_n).$$
+
+        \begin{example}
+            Motivace příběhem o C. F. Gaussovi a jeho úloze \uv{Sečti všechna přirozená čísla od $1$ do $100$.}\\
+            \begin{gather*}
+                (1 + 100) + (2 + 99) + \dots + (100 + 1) = 100 \cdot 101 = 10 100 \\
+                \Downarrow\\
+                1 + \cdot + 100 = \dfrac{10 100}{2} = \doubleunderline{5 050}        
+            \end{gather*}
+        \end{example}
+            
+\end{document}
