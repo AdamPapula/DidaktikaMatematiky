@@ -1,0 +1,135 @@
+\documentclass[12pt,a4paper,addpoints]{article}
+
+\pagestyle{empty}
+
+% Packages
+\usepackage{../Styles/defpackages}
+\usepackage{../Styles/mathcmd}
+\usepackage{../Styles/optionalcmd}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+
+% Assets
+\def\hmargin{18mm}
+\def\vmargin{25mm}
+\newcommand{\rightnote}[1]{\hspace*{\fill} $\triangleleft$ \textit{#1}}
+
+\input{../Assets/geometry.tex}
+
+% Title page info
+\def\maintitle{Didaktika matematiky}
+\def\subtitle{Aplikační úloha}
+\def\authorname{Kateřina Novotná, Adam Papula}
+
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \Large\textbf{{\maintitle}}
+
+            \normalsize
+            \vspace{0.5cm}
+                \subtitle
+            \vspace{1.5cm}
+            
+            \textbf{\authorname}
+            \vspace{1.5cm}
+
+            \today
+            \vfill
+            
+            \raggedright
+                \textbf{Téma:} Přirozený logaritmus.
+                
+                \textbf{Cílová skupina žáků:} 2. ročník SŠ.
+
+                \textbf{Cíl úlohy:} 
+                \footnotesize
+                    \vspace{-5mm}
+                    \begin{itemize}
+                        \item Žák aplikuje přirozený logaritmus na úlohu ze života.
+                        \item Žák správně pracuje se vzorcem (tzn. dosazení,\dots).
+                        \item Žák správně pracuje s neznámou ve vzorci.
+                        \item Žák vyjádří neznámou v exponentu ze vzorce.
+                    \end{itemize}
+                \normalsize
+                \textbf{Předpoklady:}\\
+                \footnotesize
+                Žáci znají:
+                \vspace{-5mm}
+                    \begin{itemize}[noitemsep,topsep=0pt]
+                            \item přirozený logaritmus,
+                            \item práce se vzorcem, dosazení do vzorce,
+                            \item vyjádření neznámé ze vzorce,
+                            \item exponenciální funkce.
+                    \end{itemize}
+            \normalsize
+        \end{center}
+    \end{titlepage}
+
+
+    \newpage
+
+    \section{Zadání}
+    Ideálně upečený cheesecake čerstvě vyndaný z trouby má teplotou \SI{74}{\celsius}. Umístíme jej do ledničky, ve které je teplota 
+    nastavena na \SI{1,7}{\celsius}. Po 10~minutách cheesecake změříme a~zjistíme, že jeho vnitřní teplota klesla na \SI{65,6}{\celsius}.
+    Nejvhodnější teplota na servírování je pokojová teplota. Zákazník požaduje přesnou teplotu  \SI{21,1}{\celsius}. Kdy nejpozději 
+    musíme začít péct, víme-li, že se cheesecake peče $75$ minut?
+   
+    \subsection{Nápověda}
+    Teplota ($T$) objektu v prostředí se vzduchem o teplotě $T_v$ se bude chovat podle vzorce
+    $$T(t) = D_0 \cdot \textit{e}^{-tk} + T_v$$
+    Kde 
+    \begin{itemize}
+        \item $t$ je čas,
+        \item $D_0$ je rozdíl mezi počáteční teplotou objektu a prostředí (v našem případě teplota cheesecake a lednice),
+        \item $k$ je konstanta kontinuální rychlosti ochlazování objektu.
+    \end{itemize}
+
+    Nejprve je potřeba zjistit konstantu dopočítáním z již známých údajů. Následně tuto konstantu použít pro výpočet požadovaných údajů. 
+
+    \newpage
+    \section{Řešení}
+    Víme:
+    $$T(t) = D_0 \cdot \textit{e}^{-tk} + 1,7$$
+    \textit{Poznámka: Zde je nutné ze zadání správně vyčíst jednotlivé údaje.}
+    
+    Dopočítání konstanty, \begin{itemize}
+        \item $T(0) = 74$, tedy (nic nám nedá, pouze ověření):
+        $$74 = (74 - 1,7)\cdot \textit{e}^{-0k} + 1,7$$ 
+        \item $T(10) = 65,6$ a tedy:
+        \begin{align*}
+            65,6 &= (74 - 1,7)\cdot \textit{e}^{-10k} + 1,7\\
+            63,9 &= 72,3 \cdot \textit{e}^{-10k}\\
+            \frac{63,9}{72,3} &= \textit{e}^{-10k}\\
+            \ln{\frac{63,9}{72,3}} &= -10k\\
+            k &= \frac{\ln{\frac{63,9}{72,3}}}{-10}
+        \end{align*}
+    \end{itemize}
+    \textit{Poznámka: Žáci si musí uvědomit, že nechtějí vyjádřit $e$, ale proměnnou $k$.}
+
+    Nyní, když známe konstantu, můžeme ji doplnit do vzorce pro ochlazování objektu.
+    $$T(t) = 72,3 \cdot \textit{e}^{t \cdot (\frac{1}{10} \cdot \ln{\frac{63,9}{72,3}})} + 1,7$$
+    Dosazením $21,1$ za $T(t)$ a následným dopočítáním proměnné $t$ zjistíme, jak dlouho cheesecake bude chladnout.
+    \textit{Poznámka: Méně pečliví žáci mohou mít problém se zápisem exponentu u $e$, může nastat problém se znaménkem minus v exponentu.}
+
+    \textit{Poznámka: Zde si musí uvědomit, že $T(t)$ je funkce závislosti teploty na čase, $t$ je čas ke kterému se chtějí dopracovat, $T(t)$ znají.}
+    \begin{align*}
+        21,1 &= 72,3 \cdot \textit{e}^{t \cdot (\frac{1}{10} \cdot \ln{\frac{63,9}{72,3}})} + 1,7\\
+        19,4 &= 72,3 \cdot \textit{e}^{t \cdot (\frac{1}{10} \cdot \ln{\frac{63,9}{72,3}})}\\
+        \frac{19,4}{72,3} &= \textit{e}^{t \cdot (\frac{1}{10} \cdot \ln{\frac{63,9}{72,3}})}\\
+        \ln{\frac{19,4}{72,3}} &= t \cdot (\frac{1}{10} \cdot \ln{\frac{63,9}{72,3}})\\
+        t &= \frac{\ln{\frac{19,4}{72,3}}}{\frac{1}{10} \cdot \ln{\frac{63,9}{72,3}}}\\
+        t &\approx 106,5
+    \end{align*}
+
+
+    \textit{Poznámka: Výsledek $106,5$ minut není konečný výsledek, je potřeba ještě připočítat čas pečení.}\\
+    \textit{Poznámka: Může nastat problém se správným určením jednotky u výsledku.}
+
+    Chladnutí dortu bude trvat $106,5$ minuty, samotné pečení zabere dalších $75$ minut. Nejpozději musíme začít $181,5$ ($3$ hodiny a $1,5$ minuty) minuty před příchodem zákazníka.
+
+
+
+\end{document}

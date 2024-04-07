@@ -1,0 +1,48 @@
+\documentclass[12pt,a4paper,addpoints]{article}
+
+\pagestyle{empty}
+
+% Packages
+\usepackage{../Styles/defpackages}
+\usepackage{../Styles/mathcmd}
+\usepackage{../Styles/optionalcmd}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+
+% Assets
+\def\hmargin{18mm}
+\def\vmargin{25mm}
+\newcommand{\rightnote}[1]{\hspace*{\fill} $\triangleleft$ \textit{#1}}
+
+\input{../Assets/geometry.tex}
+
+% Title page info
+\def\maintitle{Didaktika matematiky}
+\def\subtitle{Aplikační úloha}
+\def\authorname{Kateřina Novotná, Adam Papula}
+
+
+\begin{document}
+    \section{Zadání}
+    Ideálně upečený cheesecake čerstvě vyndaný z trouby má teplotou \SI{74}{\celsius}. Umístíme jej do ledničky, ve které je teplota 
+    nastavena na \SI{1,7}{\celsius}. Po 10~minutách cheesecake změříme a~zjistíme, že jeho vnitřní teplota klesla na \SI{65,6}{\celsius}.
+    Nejvhodnější teplota na servírování je pokojová teplota. Zákazník požaduje přesnou teplotu  \SI{21,1}{\celsius}. Kdy nejpozději 
+    musíme začít péct, víme-li, že se cheesecake peče $75$ minut?
+   
+    \subsection{Nápověda}
+    Teplota ($T$) objektu v prostředí se vzduchem o teplotě $T_v$ se bude chovat podle vzorce
+    $$T(t) = D_0 \cdot \textit{e}^{-tk} + T_v$$
+    Kde 
+    \begin{itemize}
+        \item $t$ je čas,
+        \item $D_0$ je rozdíl mezi počáteční teplotou objektu a prostředí (v našem případě teplota cheesecake a lednice),
+        \item $k$ je konstanta kontinuální rychlosti ochlazování objektu.
+    \end{itemize}
+
+    Nejprve je potřeba zjistit konstantu dopočítáním z již známých údajů. Následně tuto konstantu použít pro výpočet požadovaných údajů. 
+
+    \newpage
+
+
+\end{document}
